@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Source Code</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Personal Info</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="java-code.html" class="active">Java Code</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="section-box">
+            <h1>☕ Java Source Code — CC102 Final PeTa</h1>
+            
+            <h2>Project Title: Mystery Number Guesser Game</h2>
+            <p><strong>Description:</strong> This is a fun console-based game where the player tries to guess a secret number between 1 and 100. The game gives hints if the guess is too high or too low, tracks the player's score, and limits the player to 7 attempts.</p>
+
+            <h3>Source Code:</h3>
+<div class="code-box">
+// ============================================================
+//  STUDENT NAME: March Jewel Lutap Pallorina
+//  STUDENT NO.: 26-00325
+//  SECTION: BSIT 1-C
+//  COURSE: CC102 — Computer Programming 2
+//  PROJECT: Final Performance Task — Mystery Number Guesser Game
+// ============================================================
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class MysteryNumberGuesser {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        
+        System.out.println("=========================================================");
+        System.out.println("       🎮  MYSTERY NUMBER GUESSER GAME  🎮");
+        System.out.println("=========================================================");
+        System.out.println("Hello! Welcome to my game!");
+        System.out.println("I will think of a number between 1 and 100.");
+        System.out.println("Can you guess what it is? You have 7 attempts.\n");
+
+        int secretNumber = random.nextInt(100) + 1;
+        int maxAttempts = 7;
+        int attempts = 0;
+        int score = 100;
+        boolean guessedCorrectly = false;
+
+        while (attempts < maxAttempts && !guessedCorrectly) {
+            System.out.print("Attempt " + (attempts + 1) + " of " + maxAttempts + 
+                             " — Enter your guess: ");
+            
+            while (!scanner.hasNextInt()) {
+                System.out.println("❌ Please enter a valid number!");
+                scanner.next();
+                System.out.print("Try again: ");
+            }
+            
+            int guess = scanner.nextInt();
+            attempts++;
+
+            if (guess == secretNumber) {
+                guessedCorrectly = true;
+                System.out.println("\n🎉🎉 CONGRATULATIONS! YOU GUESSED IT! 🎉🎉");
+                System.out.println("✅ The secret number was: " + secretNumber);
+                System.out.println("📊 Your score: " + score + " points");
+                System.out.println("⭐ You used " + attempts + " attempt(s)! Great job!");
+            } else if (guess < secretNumber) {
+                System.out.println("📈 Too low! Try a higher number.");
+                score -= 15;
+            } else {
+                System.out.println("📉 Too high! Try a lower number.");
+                score -= 15;
+            }
+            System.out.println("-----------------------------------------");
+        }
+
+        if (!guessedCorrectly) {
+            System.out.println("\n😢 Game Over! You've used all " + maxAttempts + " attempts.");
+            System.out.println("🔍 The secret number was: " + secretNumber);
+            System.out.println("Don't give up! Try again later. 💪");
+        }
+
+        System.out.println("\nThank you for playing my game! 👋");
+        System.out.println("=========================================================");
+        scanner.close();
+    }
+}
+</div>
+            <p style="margin-top: 15px; color: #880e4f; font-style: italic;">
+                ✅ Copy this code into your Java compiler to run the game!
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 March Jewel Lutap Pallorina. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
